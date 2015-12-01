@@ -10,10 +10,12 @@ $(document).ready(function(){
             $('.character-list').empty();
             dataArr.forEach(function(usuario, index){
               var itemList = $("<li></li>");
-              var infoUsuario = "" + "nombre: " + usuario.nombre + " " +
+              var infoUsuario = " " + "nombre: " + usuario.nombre + " " +
               "edad: " +  usuario.edad;
+              var btnData = $('<button>Editar</button>').addClass(usuario.nombre);
 
               itemList.text(infoUsuario);
+              itemList.append(btnData);
               $('.character-list').append(itemList);
             })
           }
