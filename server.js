@@ -1,23 +1,37 @@
-var express = require("express"),
-helmet = require("helmet"),
-bodyParser = require("body-parser");
+var express = require('express'),
+  helmet = require('helmet'),
+  bodyParser = require('body-parser');
 
 var app = express();
 
-var objeto = {nombre:"pepe", edad:80};
+var usuario = [{nombre: 'pepe', edad: 80},
+{nombre: 'pepito', edad: 70},
+{nombre: 'jose', edad: 60}];
 
 app.use(helmet());
 app.use(bodyParser.json());
-app.use(express.static("public"));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
 
 app.get('/getData', function (req, res) {
-  res.send(JSON.stringify(objeto));
+  res.send(JSON.stringify(usuario));
+
 });
 
+// json
 app.post('/postData', function (req, res) {
   console.log(req.body);
-  res.send("todo ok");
+  res.send('todo ok');
 });
+
+// form
+app.post('/createUser', function (req, res) {
+  console.log(req.body);
+  res.send('todo ok');
+});
+
+
 
 var server = app.listen(3000, function () {
   var host = server.address().address;
