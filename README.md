@@ -1,7 +1,7 @@
 # Students-app
 
 ## Install
-```
+```bash
 npm install 
 ``` 
 
